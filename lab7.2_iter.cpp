@@ -61,11 +61,9 @@ void print(int** a, int rowCount, int colCount)
 }
 void callMinMax(int** a, int rowCount, int colCount)
 {
-	int indexMin = a[0][0];
-	int indexMax = a[0][0];
-	int max = a[0][0];
-	for (int row=0; row < rowCount; row++)
-		if (row % 2 == 0)
+	int indexMin = 0;
+	int indexMax = 0;
+	for (int row=0; row < rowCount; row+=2)
 		{
 			indexMin = MinE(a,row,colCount);
 			indexMax = MaxE(a, row, colCount);
@@ -76,7 +74,7 @@ void callMinMax(int** a, int rowCount, int colCount)
 int MinE(int** a, int row, int colCount)
 {
 	int indexMin = 0;
-	int min = a[0][0];
+	int min = a[row][0];
 	for (int i = 0; i < colCount; ++i)
 	{
 		if (a[row][i] < min)
@@ -90,7 +88,7 @@ int MinE(int** a, int row, int colCount)
 int MaxE(int** a, int row, int colCount)
 {
 	int indexMax = 0;
-	int max = a[0][0];
+	int max = a[row][0];
 	for (int i = 0; i < colCount; ++i)
 	{
 		if (a[row][i] > max)
